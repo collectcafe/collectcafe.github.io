@@ -222,13 +222,13 @@ scripting_active: false
       }
     }
   </style>
-  <div aria-label="Promotion" class="modal fade promotion-pop-up" id="promotion-pop-up" role="dialog" tabindex="-1">
+  <!-- <div aria-label="Promotion" class="modal fade promotion-pop-up" id="promotion-pop-up" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
       <div class="modal-content promotion_pop_up_content" data-has-image="" data-internalname="catering"
         data-is-template-image-and-button="false"
-        data-link-url="#&source=pop_up&destination=catering&promotion=catering" id="1271586"><!-- Modal Header -->
+        data-link-url="#&source=pop_up&destination=catering&promotion=catering" id="1271586">
         <div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-              aria-hidden="true">×</span></button></div><!-- Modal body -->
+              aria-hidden="true">×</span></button></div> 
         <div class="modal-body modal-plain-text">
           <h1>Did you know we do catering?</h1>
           <h2>Whatever your occasion, however big or small, we have the perfect options to choose from.</h2>
@@ -240,9 +240,9 @@ scripting_active: false
       <div class="modal-content promotion_pop_up_content" data-has-image="" data-internalname="order_online"
         data-is-template-image-and-button="false"
         data-link-url="#?source=pop_up&spot_id=70582&destination=order&promotion=order_online" id="1066557">
-        <!-- Modal Header -->
+         Modal Header 
         <div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
-              aria-hidden="true">×</span></button></div><!-- Modal body -->
+              aria-hidden="true">×</span></button></div>
         <div class="modal-body modal-plain-text">
           <p>Order your favorite dishes in seconds!</p>
         </div>
@@ -250,7 +250,7 @@ scripting_active: false
             data-href="#?source=pop_up&spot_id=70582&destination=order&promotion=order_online">Order Online</a></div>
       </div>
     </div>
-  </div>
+  </div> -->
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -2152,74 +2152,74 @@ scripting_active: false
     }
 
 
-    function do_promotion_analytics(eventLabel, spot_promotion_channel_id, data_link_url, hasImage, is_template_image_and_button) {
+    // function do_promotion_analytics(eventLabel, spot_promotion_channel_id, data_link_url, hasImage, is_template_image_and_button) {
 
-      analytics = obtain_analytics_function();
+    //   analytics = obtain_analytics_function();
 
-      if (!analytics) {
-        return null;
-      }
+    //   if (!analytics) {
+    //     return null;
+    //   }
 
 
-      var pop_up_template = (is_template_image_and_button == 'true' ? 'text,image&button' : 'text&button');
-      var image_enabled_disabled = (hasImage ? 'image_enabled' : 'image_disabled');
-      var additional_info = (is_template_image_and_button == 'true' ? '|' + image_enabled_disabled : '');
+    //   var pop_up_template = (is_template_image_and_button == 'true' ? 'text,image&button' : 'text&button');
+    //   var image_enabled_disabled = (hasImage ? 'image_enabled' : 'image_disabled');
+    //   var additional_info = (is_template_image_and_button == 'true' ? '|' + image_enabled_disabled : '');
 
-      analytics('send', 'event', 'Pop Up Promotion', 'View', eventLabel + '|||' + data_link_url + '|' + pop_up_template + additional_info);
+    //   analytics('send', 'event', 'Pop Up Promotion', 'View', eventLabel + '|||' + data_link_url + '|' + pop_up_template + additional_info);
 
-      // analytics('send', 'event', 'Pop Up Promotion', 'View', eventLabel);
-      if (typeof $ === 'function') {
-        $(".promotion_pop_up_content a").on("click", function (event) {
-          analytics('send', 'event', {
-            eventCategory: 'Pop Up Promotion Button',
-            eventAction: 'Click',
-            eventLabel: eventLabel + '|||' + event.target.href + '|' + pop_up_template + additional_info,
-            transport: 'beacon'
-          });
-          $("#promotion-pop-up").modal('hide');
-          return true;
-        });
-      }
+    //   // analytics('send', 'event', 'Pop Up Promotion', 'View', eventLabel);
+    //   if (typeof $ === 'function') {
+    //     $(".promotion_pop_up_content a").on("click", function (event) {
+    //       analytics('send', 'event', {
+    //         eventCategory: 'Pop Up Promotion Button',
+    //         eventAction: 'Click',
+    //         eventLabel: eventLabel + '|||' + event.target.href + '|' + pop_up_template + additional_info,
+    //         transport: 'beacon'
+    //       });
+    //       $("#promotion-pop-up").modal('hide');
+    //       return true;
+    //     });
+    //   }
 
-    }
+    // }
 
-    function displayPromotionPopUp() {
+    // function displayPromotionPopUp() {
 
-      var sessionStorageKey = "promotion-pop-up-container-ids";
-      var items = document.getElementsByClassName('promotion_pop_up_content');
+    //   var sessionStorageKey = "promotion-pop-up-container-ids";
+    //   var items = document.getElementsByClassName('promotion_pop_up_content');
 
-      var shown_ids = sessionStorage.getItem(sessionStorageKey)
-        && sessionStorage.getItem(sessionStorageKey).split(",") || [];
+    //   var shown_ids = sessionStorage.getItem(sessionStorageKey)
+    //     && sessionStorage.getItem(sessionStorageKey).split(",") || [];
 
-      var available_items = [];
-      for (var i = 0; i < items.length; i++) {
-        var item = items[i];
-        if (shown_ids.indexOf(item.id) == -1) {
-          available_items.push(item);
-        }
-      }
+    //   var available_items = [];
+    //   for (var i = 0; i < items.length; i++) {
+    //     var item = items[i];
+    //     if (shown_ids.indexOf(item.id) == -1) {
+    //       available_items.push(item);
+    //     }
+    //   }
 
-      if (available_items.length === 0) {
-        return false;
-      }
+    //   if (available_items.length === 0) {
+    //     return false;
+    //   }
 
-      var selected_item = available_items[Math.floor(Math.random() * available_items.length)];
-      selected_item.style.display = "block";
+    //   var selected_item = available_items[Math.floor(Math.random() * available_items.length)];
+    //   selected_item.style.display = "block";
 
-      selected_item.innerHTML = selected_item.innerHTML.replace("data-href", "href")
+    //   selected_item.innerHTML = selected_item.innerHTML.replace("data-href", "href")
 
-      if (false) {
-        shown_ids.push(selected_item.id);
+    //   if (false) {
+    //     shown_ids.push(selected_item.id);
 
-        do_promotion_analytics(selected_item.getAttribute("data-internalname"),
-          selected_item.id, selected_item.getAttribute("data-link-url"),
-          selected_item.getAttribute("data-has-image"),
-          selected_item.getAttribute("data-is-template-image-and-button"));
-      }
+    //     do_promotion_analytics(selected_item.getAttribute("data-internalname"),
+    //       selected_item.id, selected_item.getAttribute("data-link-url"),
+    //       selected_item.getAttribute("data-has-image"),
+    //       selected_item.getAttribute("data-is-template-image-and-button"));
+    //   }
 
-      sessionStorage.setItem(sessionStorageKey, shown_ids.join(","));
-      return true;
-    }
+    //   sessionStorage.setItem(sessionStorageKey, shown_ids.join(","));
+    //   return true;
+    // }
 
 
     if (typeof promotion_pop_up_initial_delay === 'undefined') {
@@ -2228,23 +2228,23 @@ scripting_active: false
 
     //overrides default implementation
 
-    setTimeout(function () {
-      if (displayPromotionPopUp()) {
-        if (typeof t !== 'undefined') {
-          clearTimeout(t);
-        }
+    // setTimeout(function () {
+    //   if (displayPromotionPopUp()) {
+    //     if (typeof t !== 'undefined') {
+    //       clearTimeout(t);
+    //     }
 
-        setTimeout(function () {
-          $(document).ready(function () {
-            $("#promotion-pop-up").modal('show');
-            $("#promotion-pop-up").modal({
-              backdrop: 'static',
-              keyboard: true
-            });
-          });
-        }, (promotion_pop_up_initial_delay > 500) ? promotion_pop_up_initial_delay - 500 : 0);
-      }
-    }, 500);
+    //     setTimeout(function () {
+    //       $(document).ready(function () {
+    //         $("#promotion-pop-up").modal('show');
+    //         $("#promotion-pop-up").modal({
+    //           backdrop: 'static',
+    //           keyboard: true
+    //         });
+    //       });
+    //     }, (promotion_pop_up_initial_delay > 500) ? promotion_pop_up_initial_delay - 500 : 0);
+    //   }
+    // }, 500);
 
 
   </script>
